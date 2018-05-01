@@ -15,3 +15,7 @@ get '/:player1/:player2' do |player1, player2|
   @outcome = game.play()
   erb(:result)
 end
+
+get '*' do
+  erb(:error)
+end
