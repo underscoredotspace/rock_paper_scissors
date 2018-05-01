@@ -1,0 +1,28 @@
+body {
+  background-color: lightyellow;
+  font-family: sans-serif;
+  margin: 3rem;
+}
+
+h1 {
+  color: rebeccapurple;
+  text-shadow: 1px 1px 10px orange;
+}
+
+a {
+  color: black;
+  text-decoration-style: double;
+}
+
+a:hover {
+  color: hotpink;
+  font-weight: bolder;
+}
+
+li {
+  padding: 0.25rem 0;
+}
+
+p {
+  width: 300px;
+}
