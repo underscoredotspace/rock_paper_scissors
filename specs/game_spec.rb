@@ -14,7 +14,15 @@ class TestGame < MiniTest::Test
   end
 
   def test_draw
-    game = Game.new('Rock', 'Rock')
+    game = Game.new('Rock', 'rock')
     assert_equal("It's a draw. You both lose. ", game.play())
+  end
+
+  def test_invalid_move
+    game = Game.new('banana', 'Rock')
+    assert_equal("Player 1's move is invalid", game.play())
+
+    game = Game.new('Scissors', 'Vulcan')
+    assert_equal("Player 2's move is invalid", game.play())
   end
 end

@@ -5,35 +5,39 @@ class Game
     @player2 = player2.downcase
   end
 
+  def isValid!(move)
+    case move
+    when 'rock', 'paper', 'scissors'
+      return true
+    end
+
+    return false
+  end
+
   def play()
+    return "Player 1's move is invalid" if !self.isValid!(@player1)
+    return "Player 2's move is invalid" if !self.isValid!(@player2)
+    return "It's a draw. You both lose. " if @player1 == @player2
 
     win_test = {
       "rock" => {
-        "rock" => 0,
-        "scissors" => 1,
-        "paper" => -1
+        "scissors" => true,
+        "paper" => false
       },
       "paper" =>  {
-        "rock" => 1,
-        "scissors" => -1,
-        "paper" => 0
+        "rock" => true,
+        "scissors" => false
       },
       "scissors" => {
-        "rock" => -1,
-        "scissors" => 0,
-        "paper" => 1
+        "rock" => false,
+        "paper" => true
       }
     }
 
-    result = win_test[@player1][@player2]
-    case result
-    when -1
-      return "Player 2 wins"
-    when 1
+    if win_test[@player1][@player2]
       return "Player 1 wins"
-    when 0
-      return "It's a draw. You both lose. "
     end
-  end
 
+    return "Player 2 wins"
+  end
 end
