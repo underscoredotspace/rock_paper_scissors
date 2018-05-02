@@ -5,7 +5,7 @@ class Game
     @player2 = player2.downcase
   end
 
-  def isValid!(move)
+  def isValid?(move)
     case move
     when 'rock', 'paper', 'scissors'
       return true
@@ -15,23 +15,14 @@ class Game
   end
 
   def play()
-    return "Player 1's move is invalid" if !self.isValid!(@player1)
-    return "Player 2's move is invalid" if !self.isValid!(@player2)
+    return "Player 1's move is invalid" if !self.isValid?(@player1)
+    return "Player 2's move is invalid" if !self.isValid?(@player2)
     return "It's a draw. You both lose. " if @player1 == @player2
 
     win_test = {
-      "rock" => {
-        "scissors" => true,
-        "paper" => false
-      },
-      "paper" =>  {
-        "rock" => true,
-        "scissors" => false
-      },
-      "scissors" => {
-        "rock" => false,
-        "paper" => true
-      }
+      "rock" => "scissors",
+      "paper" =>  "rock",
+      "scissors" => "paper"
     }
 
     if win_test[@player1][@player2]
